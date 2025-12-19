@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "You cannot apply for the wind turbine assembly grant",
+        classes: "ineligible"
+      }) }}
+
+      <p class="govuk-body">You are ineligible from applying for this grant due to your circumstances.</p>
+
+      {% set reason = data.failureReason or '' %}
+      {% if reason == 'national-grid' %}
+        <p class="govuk-body">Your property must be on the national grid to qualify for this grant.</p>
+      {% elif reason == 'business-ownership' %}
+        <p class="govuk-body">Only the legal owner of the buiness can complete this application and quality for the grant.</p>
+      {% else %}
+        <p class="govuk-body">You are ineligible from applying for this grant due to your circumstances.</p>
+      {% endif %}
+      <h2 class="govuk-heading-m">What to do next</h2>
+      <p class="govuk-body">You can:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>read about the <a href="/about">eligibility criteria</a></li>
+        <li><a href="/start">restart your application</a> if you believe you've made a mistake</li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

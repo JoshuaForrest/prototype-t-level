@@ -5,6 +5,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
 {% block header %}
 
@@ -12,5 +13,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     {{ govukServiceNavigation({
         serviceName: serviceName
     })}}
+
+    <div class="govuk-width-container">
+        {{ govukPhaseBanner({
+        tag: {
+            text: "Alpha"
+        },
+        html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
+        }) }}
+    </div>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 {
-  "serviceName": "Service name goes here",
+  "serviceName": "Apply for the wind turbine assembly grant",
   "plugins": {
     "govuk-frontend": {
       "rebrand": true
