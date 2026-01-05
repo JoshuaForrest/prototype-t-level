@@ -10,7 +10,7 @@
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
         titleText: "Application complete",
-        html: "Your reference number<br><strong>HDJ2123F</strong>"
+        html: "Your reference number<br><strong id='reference-number'></strong>"
       }) }}
       <p>We have sent you a confirmation email.</p>
       <h2 class="govuk-heading-m">What happens next</h2>
@@ -19,4 +19,8 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/confirmation.js"></script>
 {% endblock %}
