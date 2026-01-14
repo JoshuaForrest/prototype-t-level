@@ -29,10 +29,22 @@ router.post('/business-ownership-answer', function (req, res) {
   const businessOwnership = req.session.data['business-ownership']
 
   if (businessOwnership === 'Yes') {
-    return res.redirect('/additional-details')
+    return res.redirect('/property-ownership')
   }
 
   // Stores failure reason and redirects to ineligible page
   req.session.data.failureReason = 'business-ownership'
+  return res.redirect('/ineligible')
+})
+
+router.post('/property-ownership-answer', function (req, res) {
+  const propertyOwnership = req.session.data['property-ownership']
+
+  if (propertyOwnership === 'Yes') {
+    return res.redirect('/additional-details')
+  }
+
+  // Stores failure reason and redirects to ineligible page
+  req.session.data.failureReason = 'property-ownership'
   return res.redirect('/ineligible')
 })
