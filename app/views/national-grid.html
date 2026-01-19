@@ -1,4 +1,5 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% block pageTitle %}
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -46,6 +47,15 @@
           ]
         }) }}
 
+        <div class="grid-reference hide">
+          <h2 class="govuk-heading-m">Please insert your national grid reference number</h2>
+          {{ govukInput({
+            classes: "govuk-input--width-20",
+            id: "width-20",
+            name: "width20"
+          }) }}
+        </div>
+
         {{ govukButton({
           text: "Continue"
         }) }}
@@ -55,4 +65,8 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/national-grid.js"></script>
 {% endblock %}
