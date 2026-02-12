@@ -27,6 +27,10 @@
         <p class="govuk-body">Your property must be on the national grid to qualify for this grant.</p>
       {% elif reason == 'business-ownership' %}
         <p class="govuk-body">Only the legal owner of the buiness can complete this application and quality for the grant.</p>
+      {% elif reason == 'property-ownership' %}
+        <p class="govuk-body">Only the legal owner of the property can complete this application and quality for the grant.</p>
+      {% elif reason == 'land-suitability' %}
+        <p class="govuk-body">Only the legal owner of the property can complete this application and quality for the grant.</p>
       {% else %}
         <p class="govuk-body">You are ineligible from applying for this grant due to your circumstances.</p>
       {% endif %}

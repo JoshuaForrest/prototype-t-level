@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/land-suitability-answers" method="post">
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+        name: "land-suitability",
+        fieldset: {
+            legend: {
+            text: "Check the boxes below if they apply to you",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+            }
+        },
+        hint: {
+            text: "Select all that apply. These are to check that your land is suitable for the building of wind turbines"
+        },
+        items: [
+            {
+            value: "size",
+            text: "The property is more than 200 square feet"
+            },
+            {
+            value: "minimum",
+            text: "The turbine can be in place for a minimum of 20 years"
+            },
+            {
+            value: "uk",
+            text: "The property is in the uk"
+            }
+        ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

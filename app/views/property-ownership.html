@@ -1,5 +1,4 @@
 {% extends "layouts/main.html" %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% block pageTitle %}
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -17,16 +16,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/national-grid-answer" method="post">
+      <form class="form" action="/property-ownership-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "national-grid",
-          value: data['national-grid'],
+          name: "property-ownership",
+          value: data['property-ownership'],
           fieldset: {
             legend: {
-              text: "Is your property on the national grid?",
+              text: "Do you own the property you are applying on behalf of?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -39,22 +38,9 @@
             {
               value: "No",
               text: "No"
-            },
-            {
-              value: "Unsure",
-              text: "Unsure"
             }
           ]
         }) }}
-
-        <div class="grid-reference hide">
-          <h2 class="govuk-heading-m">Please insert your national grid reference number</h2>
-          {{ govukInput({
-            classes: "govuk-input--width-20",
-            id: "width-20",
-            name: "width20"
-          }) }}
-        </div>
 
         {{ govukButton({
           text: "Continue"
@@ -65,8 +51,4 @@
     </div>
   </div>
 
-{% endblock %}
-
-{% block pageScripts %}
-  <script src="/public/javascripts/national-grid.js"></script>
 {% endblock %}

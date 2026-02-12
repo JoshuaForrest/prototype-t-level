@@ -1,4 +1,5 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -10,13 +11,22 @@
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
         titleText: "Application complete",
-        html: "Your reference number<br><strong>HDJ2123F</strong>"
+        html: "Your reference number<br><strong id='reference-number'></strong>"
       }) }}
       <p>We have sent you a confirmation email.</p>
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>We've sent your application to Hackney Electoral Register Office.</p>
       <p>They will contact you either to confirm your registration, or to ask for more information.</p>
+
+      {{ govukButton({
+        text: "Return to GOV.UK",
+        href: "https://www.gov.uk"
+      }) }}
     </div>
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/confirmation.js"></script>
 {% endblock %}

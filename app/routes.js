@@ -29,10 +29,38 @@ router.post('/business-ownership-answer', function (req, res) {
   const businessOwnership = req.session.data['business-ownership']
 
   if (businessOwnership === 'Yes') {
-    return res.redirect('/additional-details')
+    return res.redirect('/property-ownership')
   }
 
   // Stores failure reason and redirects to ineligible page
   req.session.data.failureReason = 'business-ownership'
+  return res.redirect('/ineligible')
+})
+
+router.post('/property-ownership-answer', function (req, res) {
+  const propertyOwnership = req.session.data['property-ownership']
+
+  if (propertyOwnership === 'Yes') {
+    return res.redirect('/land-suitability')
+  }
+
+  // Stores failure reason and redirects to ineligible page
+  req.session.data.failureReason = 'property-ownership'
+  return res.redirect('/ineligible')
+})
+
+router.post('/land-suitability-answers', function (req, res) {
+  const selections = req.session.data['land-suitability']
+
+  const selected = Array.isArray(selections) ? selections : []
+
+  const required = ['size', 'minimum', 'uk']
+  const hasAllThree = required.every(val => selected.includes(val))
+
+  if (hasAllThree) {
+    return res.redirect('/additional-details')
+  }
+
+  req.session.data.failureReason = 'land-suitability'
   return res.redirect('/ineligible')
 })
